@@ -1,0 +1,570 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    color: #e0e0e0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    line-height: 1.6;
+}
+
+/* Matrix Background Animation */
+.matrix-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.05;
+    font-family: monospace;
+    font-size: 12px;
+    line-height: 1.2;
+    z-index: -1;
+    animation: matrix-rain 25s linear infinite;
+    white-space: pre;
+    pointer-events: none;
+}
+
+@keyframes matrix-rain {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100vh); }
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Header Styles */
+header {
+    margin-bottom: 40px;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(0, 255, 65, 0.2);
+}
+
+.home-link {
+    color: #00ff41;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 10px 20px;
+    border: 1px solid rgba(0, 255, 65, 0.3);
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.home-link:hover {
+    background: rgba(0, 255, 65, 0.1);
+    border-color: rgba(0, 255, 65, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 255, 65, 0.2);
+}
+
+.challenge-info {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.challenge-number {
+    font-size: 1.2rem;
+    color: #00d4aa;
+    font-weight: bold;
+}
+
+.difficulty {
+    padding: 5px 15px;
+    background: rgba(0, 212, 170, 0.2);
+    border: 1px solid rgba(0, 212, 170, 0.4);
+    border-radius: 15px;
+    font-size: 0.9rem;
+    color: #00d4aa;
+}
+
+.challenge-title {
+    font-size: 2.5rem;
+    text-align: center;
+    background: linear-gradient(45deg, #00ff41, #00d4aa, #0099cc);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+    animation: glow-pulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes glow-pulse {
+    from { filter: drop-shadow(0 0 5px rgba(0, 255, 65, 0.4)); }
+    to { filter: drop-shadow(0 0 15px rgba(0, 255, 65, 0.7)); }
+}
+
+/* Challenge Content Layout */
+.challenge-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+/* Card Styles */
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 255, 65, 0.2);
+    border-radius: 15px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.1), transparent);
+    transition: left 0.5s ease;
+    z-index: -1;
+}
+
+.card:hover::before {
+    left: 100%;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(0, 255, 65, 0.4);
+    box-shadow: 0 15px 30px rgba(0, 255, 65, 0.1);
+}
+
+.card h2 {
+    color: #00ff41;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-icon {
+    font-size: 1.3rem;
+}
+
+.card p {
+    margin-bottom: 15px;
+    color: #ccc;
+}
+
+/* Hints Card */
+.hints-card {
+    border-color: rgba(255, 193, 7, 0.3);
+}
+
+.hints-card:hover {
+    border-color: rgba(255, 193, 7, 0.5);
+}
+
+.hints-card h2 {
+    color: #ffc107;
+}
+
+/* Challenge Interface */
+.password-section {
+    margin-bottom: 30px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 10px;
+    color: #00d4aa;
+    font-weight: 500;
+}
+
+.password-input {
+    width: 100%;
+    padding: 15px 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(0, 255, 65, 0.3);
+    border-radius: 10px;
+    color: #e0e0e0;
+    font-size: 1.1rem;
+    font-family: monospace;
+    transition: all 0.3s ease;
+}
+
+.password-input:focus {
+    outline: none;
+    border-color: #00ff41;
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.password-input::placeholder {
+    color: #666;
+}
+
+/* Submit Button */
+.submit-btn {
+    width: 100%;
+    padding: 15px 30px;
+    background: linear-gradient(45deg, #00ff41, #00d4aa);
+    border: none;
+    border-radius: 10px;
+    color: #000;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.submit-btn:hover::before {
+    left: 100%;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 255, 65, 0.3);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+/* Challenge Data Display */
+.challenge-data {
+    margin: 30px 0;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 212, 170, 0.3);
+    border-radius: 10px;
+}
+
+.challenge-data h3 {
+    color: #00d4aa;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.data-container {
+    font-family: monospace;
+    font-size: 1.1rem;
+    color: #0ff;
+    background: #000;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #00ff41;
+    white-space: pre-wrap;
+    word-break: break-all;
+    line-height: 1.4;
+}
+
+/* Result Container */
+.result-container {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.result-message {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.result-container.success {
+    background: rgba(0, 255, 65, 0.1);
+    border: 1px solid rgba(0, 255, 65, 0.5);
+}
+
+.result-container.success .result-message {
+    color: #00ff41;
+}
+
+.result-container.error {
+    background: rgba(255, 0, 0, 0.1);
+    border: 1px solid rgba(255, 0, 0, 0.5);
+}
+
+.result-container.error .result-message {
+    color: #ff4444;
+}
+
+/* Buttons */
+.btn-secondary {
+    padding: 10px 20px;
+    background: rgba(255, 193, 7, 0.2);
+    border: 1px solid rgba(255, 193, 7, 0.5);
+    border-radius: 8px;
+    color: #ffc107;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 193, 7, 0.3);
+    transform: translateY(-2px);
+}
+
+.btn-next {
+    padding: 12px 25px;
+    background: linear-gradient(45deg, #0099cc, #00d4aa);
+    border: none;
+    border-radius: 25px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+}
+
+.btn-next:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 153, 204, 0.3);
+}
+
+/* Progress Section */
+.progress-section {
+    margin: 40px 0;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 255, 65, 0.2);
+    border-radius: 15px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 12px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    border: 1px solid rgba(0, 255, 65, 0.3);
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00ff41, #00d4aa);
+    border-radius: 6px;
+    transition: width 0.5s ease;
+    position: relative;
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: progress-shine 2s infinite;
+}
+
+@keyframes progress-shine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.progress-text {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+/* Terminal */
+.terminal {
+    background: #000;
+    border: 1px solid #00ff41;
+    border-radius: 10px;
+    padding: 20px;
+    font-family: 'Courier New', monospace;
+    margin: 30px 0;
+}
+
+.terminal-header {
+    color: #00ff41;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.terminal-content {
+    color: #0f0;
+    line-height: 1.4;
+    font-size: 0.9rem;
+}
+
+/* Pulse Animation */
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .challenge-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .nav-bar {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .challenge-info {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .challenge-title {
+        font-size: 2rem;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .progress-text {
+        flex-direction: column;
+        gap: 5px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .challenge-title {
+        font-size: 1.8rem;
+    }
+
+    .card h2 {
+        font-size: 1.3rem;
+    }
+
+    .password-input {
+        font-size: 1rem;
+        padding: 12px 15px;
+    }
+
+    .submit-btn {
+        font-size: 1rem;
+        padding: 12px 25px;
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #00ff41, #00d4aa);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #00d4aa, #0099cc);
+}
+
+/* Loading Animation */
+.loading {
+    position: relative;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid transparent;
+    border-top: 2px solid #00ff41;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Special Effects */
+.glow-text {
+    text-shadow: 0 0 10px currentColor;
+}
+
+.shake {
+    animation: shake 0.5s ease-in-out;
+}
+

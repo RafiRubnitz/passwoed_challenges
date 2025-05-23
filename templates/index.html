@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrackTheCode - אתגרי פיענוח סיסמאות</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+</head>
+<body>
+    <div class="matrix-bg" id="matrixBg"></div>
+
+    <div class="container">
+        <header>
+            <h1 class="logo">🔐 CrackTheCode</h1>
+            <p class="tagline">ברוכים הבאים לעולם פיענוח הסיסמאות</p>
+            <p class="subtitle">> הכנו לכם אתגרים מרתקים...</p>
+        </header>
+
+        <div class="main-content">
+            <div class="card">
+                <h2><span class="card-icon">🎯</span>מה זה האתר?</h2>
+                <p>CrackTheCode הוא אתר אתגרים ייחודי המיועד ללימוד ותרגול טכניקות פיענוח סיסמאות באופן חוקי וחינוכי.</p>
+                <p>כאן תוכלו להתנסות במגוון רחב של אתגרים - מסיסמאות פשוטות ועד לאלגוריתמי הצפנה מתקדמים.</p>
+                <p>כל אתגר מגיע עם הסברים וטיפים שיעזרו לכם להבין את העקרונות מאחורי אבטחת מידע.</p>
+            </div>
+
+            <div class="card">
+                <h2><span class="card-icon">🚀</span>למי זה מיועד?</h2>
+                <p><strong>סטודנטים לאבטחת מידע</strong> - תרגלו את מה שלמדתם בקורסים</p>
+                <p><strong>חובבי סייבר</strong> - גלו עולמות חדשים של אתגרים טכניים</p>
+                <p><strong>מקצוענים</strong> - שפרו את הכישורים שלכם בפן הטכני</p>
+                <p><strong>סקרנים</strong> - למדו איך באמת עובדת אבטחת מידע</p>
+            </div>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">⚡</div>
+                <h3>אתגרים מדורגים</h3>
+                <p>מרמה בסיסית למתקדמת</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🏆</div>
+                <h3>מערכת ניקוד</h3>
+                <p>עקבו אחר ההתקדמות שלכם</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">📚</div>
+                <h3>חומר לימוד</h3>
+                <p>הסברים ומדריכים מפורטים</p>
+            </div>
+        </div>
+
+        <div class="terminal">
+            <div class="terminal-header">$ status</div>
+            <div class="terminal-content">
+> מערכת פעילה ומוכנה לקבלת אתגרים<br>
+> רמת אתגר נוכחית: מתחילים<br>
+> משתמשים פעילים: <span class="pulse">●</span> ONLINE<br>
+> הכנו לכם 10+ אתגרים מגניבים
+            </div>
+        </div>
+
+        <div class="warning-box">
+            <div class="warning-icon">⚠️</div>
+            <p><strong>הערה חשובה:</strong> כל האתגרים באתר מיועדים למטרות חינוכיות בלבד. השימוש בטכניקות אלו על מערכות שאינן שלכם הוא בלתי חוקי!</p>
+        </div>
+
+        <div class="cta-section">
+            <h2 style="margin-bottom: 30px; color: #00d4aa;">מוכנים להתחיל?</h2>
+            <a href="password_challenge/ex/0.html" class="cta-button">
+                🔓 התחל את האתגר הראשון
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Matrix rain effect
+        function createMatrixRain() {
+            const chars = '01אבגדהוזחטיכלמנסעפצקרשת';
+            const matrixElement = document.getElementById('matrixBg');
+            let matrixText = '';
+
+            for (let i = 0; i < 100; i++) {
+                const line = Array.from({length: 50}, () =>
+                    chars[Math.floor(Math.random() * chars.length)]
+                ).join('') + '\n';
+                matrixText += line;
+            }
+
+            matrixElement.textContent = matrixText;
+        }
+
+        // Initialize matrix effect
+        createMatrixRain();
+
+        // Refresh matrix every 10 seconds
+        setInterval(createMatrixRain, 10000);
+
+        // Add some interactive effects
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                card.style.setProperty('--mouse-x', x + 'px');
+                card.style.setProperty('--mouse-y', y + 'px');
+            });
+        });
+    </script>
+</body>
+</html>

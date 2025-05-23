@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>אתגר 1 - CrackTheCode</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='base.css')}}">
+</head>
+<body>
+    <div class="matrix-bg" id="matrixBg"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="nav-bar">
+                <a href="index.html" class="home-link">🏠 חזרה לעמוד הבית</a>
+                <div class="challenge-info">
+                    <span class="challenge-number">אתגר <span id="challengeNumber">1</span></span>
+                    <span class="difficulty" id="difficultyLevel">רמה: קל</span>
+                </div>
+            </div>
+            <h1 class="challenge-title" id="challengeTitle">כותרת האתגר</h1>
+        </header>
+
+        <!-- Challenge Content -->
+        <div class="challenge-content">
+            <div class="challenge-description">
+                <div class="card">
+                    <h2><span class="card-icon">📋</span>תיאור המשימה</h2>
+                    <div id="challengeDescription">
+                        <p>הקוד הוא מספר בין 6 ספרות</p>
+                    </div>
+                </div>
+
+                <div class="card hints-card" id="hintsCard" style="display: none;">
+                    <h2><span class="card-icon">💡</span>רמזים</h2>
+                    <div id="hintsContent">
+                        <p>רמזים יופיעו כאן...</p>
+                    </div>
+                    <button class="btn-secondary" id="showHintsBtn">הצג רמזים</button>
+                </div>
+            </div>
+
+            <div class="challenge-interface">
+                <div class="card">
+                    <h2><span class="card-icon">🔐</span>פענח את הסיסמא</h2>
+
+                    <!-- Password Input Section -->
+                    <div class="password-section">
+                        <div class="input-group">
+                            <label for="passwordInput">הכנס את הסיסמא שפיענחת:</label>
+                            <input type="text" id="passwordInput" class="password-input" placeholder="הכנס סיסמא כאן...">
+                        </div>
+
+                        <button type="submit" id="submitBtn" class="submit-btn">
+                            <span class="btn-text">בדוק סיסמא</span>
+                            <span class="btn-icon">🔍</span>
+                        </button>
+                    </div>
+
+                    <!-- Challenge Data Display -->
+                    <div class="challenge-data" id="challengeData">
+                        <h3>נתונים לפיענוח:</h3>
+                        <div class="data-container" id="dataContainer">
+                            <!-- הנתונים של האתגר יופיעו כאן -->
+                        </div>
+                    </div>
+
+                    <!-- Result Display -->
+                    <div class="result-container" id="resultContainer" style="display: none;">
+                        <div class="result-message" id="resultMessage"></div>
+                        <div class="result-actions" id="resultActions" style="display: none;">
+                            <button class="btn-next" id="nextChallengeBtn">האתגר הבא →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-section">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+            <div class="progress-text">
+                <span id="attemptsCount">ניסיונות: 0</span>
+                <span id="scoreDisplay">ניקוד: 0</span>
+            </div>
+        </div>
+
+        <!-- Terminal Status -->
+        <div class="terminal">
+            <div class="terminal-header">$ challenge-status</div>
+            <div class="terminal-content" id="terminalContent">
+> ממתין לפתרון...<br>
+> הכנס את הסיסמא הנכונה כדי להמשיך<br>
+> <span class="pulse">●</span> מערכת מוכנה
+            </div>
+        </div>
+    </div>
+
+    <script src="challenge-script.js"></script>
+</body>
+</html>
